@@ -1,0 +1,4 @@
+?url=class/method/parameter
+
+?url=category[0] / update_category [1] / 24 [2]
+ 
