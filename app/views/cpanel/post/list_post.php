@@ -11,37 +11,30 @@ if(!empty($_GET['msg'])){
 
 ?>
 <div class="container">
-<h3 style="text-align:center;">Liệt Kê Sản Phẩm</h3>
+<h3 style="text-align:center;">Liệt Kê Bai Viet</h3>
 <table class="table table-striped">
     <thead>
       <tr>
         <th>Id</th>
-        <th>Tên Sản Phẩm</th>
-        <th>Anh Sản Phẩm</th>
+        <th>Tên Bai Viet</th>
+        <th>Anh Bai Viet</th>
         <th>Danh Muc</th>
-        <th>Giá Sản Phẩm</th>
-        <th>Số Lượng</th>
-        <th>Mô tả</th>
         <th>Quản Lý</th>
       </tr>
     </thead>
     <tbody>
         <?php 
         $i=0;
-        foreach($product as $key => $pro){
-
+        foreach($post as $key => $po){
             $i++;
         ?>
       <tr>
         <td><?php echo $i?></td>
-        <td><?php echo $pro['title_product']?></td>
-        <td><img src="<?php echo BASE_URL?>public/uploads/product/<?php echo $pro['image_product']?>" height="100px" width="100px"> </td>
-        <td><?php echo $pro['title_category']?></td>
-        <td><?php echo number_format($pro['price_product'],0,',','.').'đ' ?></td>
-        <td><?php echo $pro['quantity_product']?></td>
-        <td><?php echo $pro['desc_product']?></td>
-        <td><a href="<?php echo BASE_URL?>product/delete_product/<?php echo $pro['id_product'] ?>">Delete</a>||<a 
-        href="<?php echo BASE_URL?>product/edit_product/<?php echo $pro['id_product'] ?>">Update</a></td>
+        <td><?php echo $po['title_post_flw']?></td>
+        <td><img src="<?php echo BASE_URL?>public/uploads/post/<?php echo $po['image_post_flw']?>" height="100px" width="100px"> </td>
+        <td><?php echo $po['title_post']?></td>
+        <td><a href="<?php echo BASE_URL?>post/delete_post/<?php echo $po['id_post_flw'] ?>">Delete</a>||<a 
+        href="<?php echo BASE_URL?>post/edit_post/<?php echo $po['id_post_flw'] ?>">Update</a></td>
       </tr>
       <?php
        }

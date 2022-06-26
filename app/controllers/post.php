@@ -107,6 +107,103 @@ class post extends DController{
 
        }
     }
+    
+    public function add_post(){
+     
+        $this -> load -> view('cpanel/header');
+        $this -> load -> view('cpanel/menu');
+        $postmodel = $this -> load -> model('postmodel');
+        $table = "tbl_post";
+        $data['category'] = $postmodel-> category_post($table);
+
+        $this -> load -> view('cpanel/post/add_post',$data);
+        $this -> load -> view('cpanel/footer');
+    }
+
+    public function insert_post(){
+        $title = $_POST['title_post_flw'];
+        $content = $_POST['content_post_flw']; 
+       
+        //lay anh ve upload folder
+        $image = $_FILES['image_post_flw']['name'];
+        $tmp_image = $_FILES['image_post_flw']['tmp_name'];
+        $div = explode('.',$image);
+        $file_ext = strtolower(end($div));
+        $unique_image = $div[0].time().'.'.$file_ext;
+
+        $path_uploads = "public/uploads/post/".$unique_image;
+
+        $category = $_POST['category_post'];
+        $table = "tbl_post_flw";
+
+        $data = array(
+         'title_post_flw' => $title,
+         'content_post_flw' => $content,
+         'image_post_flw' => $unique_image,
+         'id_post' => $category
+        );
+        
+        $postmodel = $this -> load -> model('postmodel');
+         $result = $postmodel ->insertpost($table,$data);
+ 
+        if($result==1){
+            move_uploaded_file($tmp_image,$path_uploads);
+             $message['msg']='Thêm bài viết thành công';
+               header("Location:".BASE_URL."post/add_post?msg=".urlencode(serialize($message)));
+        }else{
+                $message['msg']='Thêm bài viết thất bại';
+               header("Location:".BASE_URL."post/add_post?msg=".urlencode(serialize($message)));
+        }
+    }
+
+    public function list_post(){
+        
+        $this -> load -> view('cpanel/header');
+        $this -> load -> view('cpanel/menu');
+
+        $table_post_flw = "tbl_post_flw";
+        $table_post= "tbl_post";
+
+        $postmodel = $this -> load -> model('postmodel');
+        $data['post'] = $postmodel-> post($table_post_flw,$table_post);
+
+        $this -> load -> view('cpanel/post/list_post',$data);
+        $this -> load -> view('cpanel/footer');
+    }
+
+    public function delete_post($id){
+        $table = "tbl_post_flw";
+        $cond = "tbl_post_flw.id_post_flw ='$id'";
+        $postmodel = $this -> load -> model('postmodel');
+        $result = $postmodel-> deletepost($table,$cond);
+
+        if($result==1){
+            $message['msg']='Delete Bài Viết Thành Công';
+            header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
+       }else{
+        $message['msg']='Delete Bài Viết Thất Bại';
+            header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
+        // header("Location:".BASE_URL."product");
+       }
+    }
+    
+    //lam tiep
+    public function edit_post($id){
+        $table = "tbl_post_flw";
+        $cond = "tbl_product.id_product ='$id'";
+        $table_category = "tbl_category_product";
+        $categorymodel = $this -> load -> model('categorymodel');
+
+        $data['productbyid'] = $categorymodel-> productbyid($table,$cond);
+        $data['category'] = $categorymodel-> category($table_category);
+
+        $this -> load -> view('cpanel/header');
+        $this -> load -> view('cpanel/menu');
+        $this -> load -> view('cpanel/product/edit_product',$data);
+        $this -> load -> view('cpanel/footer');
+    }
+
+
 
 
 }

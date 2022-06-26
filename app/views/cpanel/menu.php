@@ -22,8 +22,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bài viêt
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="#">Thêm</a></li>
-          <li><a href="#">Liệt kê</a></li>
+        <li><a href="<?php echo BASE_URL?>post/add_post">Thêm</a></li>
+          <li><a href="<?php echo BASE_URL?>post/list_post">Liệt kê</a></li>
         </ul>
       </li>
 
