@@ -4,7 +4,7 @@ class login extends DController{
     
     public function __construct()
     {
-        Session::checkSession();
+        
         $message =  array();
         $data = array();
         parent::__construct();         
@@ -25,6 +25,7 @@ class login extends DController{
         $this -> load -> view('footer');
     }
     public function dashboard(){
+        Session::checkSession();
         //check session login ton tai hay k, neu k t
     
         $this -> load -> view('cpanel/header');

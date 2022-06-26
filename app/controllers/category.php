@@ -20,8 +20,6 @@ class category extends DController{
 
         $this -> load -> view('category',$data);
         $this -> load -> view('footer');
-
-  
     }
 
     public function catebyid(){
