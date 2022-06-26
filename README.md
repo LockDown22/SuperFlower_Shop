@@ -1,4 +1,4 @@
-# SuperFlower_Shop
+# SuperFlower_Shop by ThanhOP
 -This is web app Create by ThanhOP(aka lockdown)
 -tech: PHP PDO framework
       MySql
