@@ -7,52 +7,42 @@ if(!empty($_GET['msg'])){
     }  
 }
 ?>
-<h3 style="text-align:center;">Update Sản Phẩm</h3>
+<h3 style="text-align:center;">Cập nhật Bài Viết</h3>
 <div class="col-md-12">
-<?php 
-  foreach($productbyid as $key =>$pro){
-
-?>
-<form action="<?php echo BASE_URL ?>product/update_product/<?php echo $pro['id_product'] ?>" method="POST" enctype="multipart/form-data">
-
+  <?php 
+    foreach($postbyid as $key =>$pos){
+  ?>
+<form action="<?php echo BASE_URL ?>post/update_post_flw/<?php echo $pos['id_post_flw']?>" method="POST" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="email">Tên Danh Mục</label>
-    <input type="text" value="<?php echo $pro['title_product'] ?>" name="title_product" class="form-control" >
+    <label for="email">Tên Bài Viết </label>
+    <input type="text" value="<?php echo $pos['id_post_flw']?>" name="title_post_flw" class="form-control" required>
   </div>
   <div class="form-group">
-    <label for="email">Hình ảnh sản phẩm</label>
-    <input type="file" value="#" name="image_product" class="form-control" >
-    <p><img src="<?php echo BASE_URL?>public/uploads/product/<?php echo $pro['image_product']?>" height="100px" width="100px"> </p>
+    <label for="email">Hình ảnh Bài Viết</label>
+    <input type="file" name="image_post_flw" class="form-control" >
+    <p><img src="<?php echo BASE_URL?>public/uploads/post/<?php echo $pos['image_post_flw']?>" height="100px" width="100px"> </p>
   </div>
   <div class="form-group">
-    <label for="email">Giá sản phẩm</label>
-    <input type="text" value="<?php echo $pro['price_product'] ?>" name="price_product" class="form-control" >
+    <label for="email">Chi tiết Bài Viết</label>
+    <textarea name="content_post_flw" row="10" style="resize:none;"  class="form-control" required><?php echo $pos['content_post_flw']?> </textarea>
   </div>
   <div class="form-group">
-    <label for="email">Số lượng sản phẩm</label>
-    <input type="text" value="<?php echo $pro['quantity_product'] ?>" name="quantity_product" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label for="email">Mô tả sản phẩm</label>
-    <textarea name="desc_product" row="5" style="resize:none;"  class="form-control" ><?php echo $pro['desc_product'] ?> </textarea>
-  </div>
-  <div class="form-group">
-    <label for="pwd">Danh Mục sản phẩm</label>
-    <select class="form-control" name="category_product">
-
+    <label for="pwd">Danh Mục Bài Viết</label>
+    <select class="form-control" name="category_post">
       <?php 
-      foreach($category as $key => $cate){
+      foreach($post_category as $key => $cate){
       ?>
-      <option <?php if($cate['id_category']==$pro['id_category']){echo 'selected';} ?> value="<?php echo $cate['id_category'] ?>"> <?php echo $cate['title_category'] ?> </option>
+      <option <?php if($cate['id_post']==$pos['id_post']){echo 'selected';} ?>value="<?php echo $cate['id_post'] ?>"> <?php echo $cate['title_post'] ?> </option>
       <?php
       }
       ?>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-default">Update San Pham</button>
+  <button type="submit" class="btn btn-default">Thêm Bài viết</button>
 </form>
-  <?php
- }
+
+<?php 
+    }
   ?>
 </div>

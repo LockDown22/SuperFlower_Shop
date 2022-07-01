@@ -31,6 +31,7 @@ class Session{
     public function destroy(){
         session_destroy();
     }
+    
     public function unset($key){
         session_unset($key);
     }

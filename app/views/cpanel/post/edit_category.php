@@ -15,7 +15,7 @@ if(!empty($_GET['msg'])){
        
     
     ?>
-<form action="<?php echo BASE_URL ?>post/update_post/<?php echo $cate['id_post'] ?>" method="POST">
+<form action="<?php echo BASE_URL ?>post/update_post_category/<?php echo $cate['id_post'] ?>" method="POST">
   <div class="form-group">
     <label for="email">Tên Danh Mục</label>
     <input type="text" value="<?php echo $cate['title_post']?>" name="title_post" class="form-control" required>

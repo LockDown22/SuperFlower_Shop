@@ -4,7 +4,5 @@ class homemodel extends DModel{
     {
         parent::__construct();
     }
-
-    
     
 }

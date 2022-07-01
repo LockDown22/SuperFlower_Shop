@@ -53,6 +53,8 @@
           <li><a href="<?php echo BASE_URL?>order">Liệt kê</a></li>
         </ul>
       </li>
+      <a href="<?php echo BASE_URL?>login/logout" class="">Logout</a>
+     
 
     </ul>
   </div>

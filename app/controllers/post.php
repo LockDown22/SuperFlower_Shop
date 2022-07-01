@@ -83,7 +83,7 @@ class post extends DController{
     }
 
 
-    public function update_post($id){
+    public function update_post_category($id){
         $table = "tbl_post";
         $cond = "tbl_post.id_post ='$id'";
         $title = $_POST['title_post'];
@@ -149,10 +149,10 @@ class post extends DController{
         if($result==1){
             move_uploaded_file($tmp_image,$path_uploads);
              $message['msg']='Thêm bài viết thành công';
-               header("Location:".BASE_URL."post/add_post?msg=".urlencode(serialize($message)));
+               header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
         }else{
                 $message['msg']='Thêm bài viết thất bại';
-               header("Location:".BASE_URL."post/add_post?msg=".urlencode(serialize($message)));
+               header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
         }
     }
 
@@ -190,20 +190,74 @@ class post extends DController{
     //lam tiep
     public function edit_post($id){
         $table = "tbl_post_flw";
-        $cond = "tbl_product.id_product ='$id'";
-        $table_category = "tbl_category_product";
-        $categorymodel = $this -> load -> model('categorymodel');
+        $cond = "tbl_post_flw.id_post_flw ='$id'";
+        $table_category = "tbl_post";
+        $postmodel = $this -> load -> model('postmodel');
 
-        $data['productbyid'] = $categorymodel-> productbyid($table,$cond);
-        $data['category'] = $categorymodel-> category($table_category);
+        $data['postbyid'] = $postmodel-> postbyid($table,$cond);
+        $data['post_category'] = $postmodel-> category_post($table_category);
 
         $this -> load -> view('cpanel/header');
         $this -> load -> view('cpanel/menu');
-        $this -> load -> view('cpanel/product/edit_product',$data);
+        $this -> load -> view('cpanel/post/edit_post',$data);
         $this -> load -> view('cpanel/footer');
     }
 
+    public function update_post_flw($id){
+        $title = $_POST['title_post_flw'];
+        $category = $_POST['category_post'];
+        $content = $_POST['content_post_flw']; 
+        $postmodel = $this -> load -> model('postmodel');
+        $table = "tbl_post_flw";
+        $cond = "tbl_post_flw.id_post_flw ='$id'";
+        //lay anh ve upload folder
+        $image = $_FILES['image_post_flw']['name'];
+        $tmp_image = $_FILES['image_post_flw']['tmp_name'];
+        $div = explode('.',$image);
+        $file_ext = strtolower(end($div));
+        $unique_image = $div[0].time().'.'.$file_ext;
 
+        $path_uploads = "public/uploads/post/".$unique_image;
+            if($image){
+
+                $data['postbyid'] = $postmodel-> postbyid($table,$cond);
+            foreach( $data['postbyid'] as $key=>$value){
+                
+                            $path_unlink ='public/uploads/post/';
+                           unlink($path_unlink.$value['image_post_flw']);
+            }
+                $data = array(
+                    'title_post_flw' => $title,
+                    'content_post_flw' => $content,
+                    'image_post_flw' => $unique_image,
+                    'id_post' => $category
+                   );
+                   move_uploaded_file($tmp_image,$path_uploads);
+            }else{
+                $data = array(
+                    'title_post_flw' => $title,
+                    'content_post_flw' => $content,
+                    // 'image_post_flw' => $unique_image,
+                    'id_post' => $category
+                   );
+            }
+        
+        
+       
+         $result = $postmodel ->updatepost($table,$data,$cond);
+ 
+        if($result==1){
+            
+             $message['msg']='Cap Nhat viết thành công';
+               header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
+        }else{
+                $message['msg']='Cap Nhat viết thất bại';
+               header("Location:".BASE_URL."post/list_post?msg=".urlencode(serialize($message)));
+        }
+
+    }
+
+    
 
 
 }

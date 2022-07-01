@@ -16,13 +16,13 @@ class login extends DController{
    }
 
     public function login(){
-        $this -> load -> view('header');  
+        // $this -> load -> view('header');  
         Session::init();
         if(Session::get("login")==true){
             header("Location:".BASE_URL."login/dashboard");
         }
         $this -> load -> view('cpanel/login');
-        $this -> load -> view('footer');
+        // $this -> load -> view('footer');
     }
     public function dashboard(){
         Session::checkSession();

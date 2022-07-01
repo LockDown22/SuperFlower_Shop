@@ -10,7 +10,7 @@ class postmodel extends DModel{
         return $this->db->select($sql);
 
     } 
-    public function  categorybyid($table,$cond){
+    public function  postbyid($table,$cond){
           $sql = "SELECT * FROM $table WHERE $cond";
     
         return $this->db->select($sql);
@@ -27,12 +27,15 @@ class postmodel extends DModel{
         return $this->db->select($sql);
     }
 
-    // public function updatecategory($table,$data,$cond){
-    //     return $this->db->update($table,$data,$cond);
-    // }
+    public function updatepost($table,$data,$cond){
+        return $this->db->update($table,$data,$cond);
+    }
+    
     public function deletepost($table,$cond){
         return $this->db->delete($table,$cond);
     }
-   
+    
+
+    
     
 }
