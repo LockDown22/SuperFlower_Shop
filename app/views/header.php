@@ -59,7 +59,7 @@ if(isset($message)){
             
             <li><a href="#">account +</a>
                 <ul>
-                    <li><a href="login.php">login</a></li>
+                    <li><a href="<?php echo BASE_URL?>login/login">login</a></li>
                     <li><a href="register.php">register</a></li>
                 </ul>
             </li>
@@ -81,18 +81,12 @@ if(isset($message)){
 
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
-        <a href="search_page.php" class="fas fa-search"></a>
+        <a href="#" class="fas fa-search"></a>
         <div id="user-btn" class="fas fa-user"></div>
-        <?php
-            // $select_wishlist_count = mysqli_query($conn, "SELECT * FROM `wishlist` WHERE user_id = '$user_id'") or die('query failed');
-            // $wishlist_num_rows = mysqli_num_rows($select_wishlist_count);
-        ?>
-        <a href="wishlist.php"><i class="fas fa-heart"></i><span>()</span></a>
-        <?php
-            // $select_cart_count = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
-            // $cart_num_rows = mysqli_num_rows($select_cart_count);
-        ?>
-        <a href="<?php echo BASE_URL ?>sanpham/cart"><i class="fas fa-shopping-cart"></i><span>()</span></a>
+       
+        <a href="#"><i class="fas fa-heart"></i><span></span></a>
+     
+        <a href="<?php echo BASE_URL ?>giohang"><i class="fas fa-shopping-cart"></i><span></span></a>
     </div>
 
     <div class="account-box">

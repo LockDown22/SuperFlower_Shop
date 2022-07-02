@@ -25,6 +25,7 @@ class sanpham extends DController{
         $this -> load -> view('categoryproduct',$data);
         $this -> load -> view('footer');
     }
+
     public function infoproduct($id){
         $table = 'tbl_category_product';
         $table_post = 'tbl_post';
@@ -38,6 +39,7 @@ class sanpham extends DController{
         $this -> load -> view('infoproduct',$data);
         $this -> load -> view('footer');
     }
+    
     public function categorypost(){
         $table = 'tbl_category_product';
         $table_post = 'tbl_post';

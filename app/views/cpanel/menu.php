@@ -49,12 +49,11 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Đơn hàng
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="<?php echo BASE_URL?>order/add_order">Thêm</a></li>
           <li><a href="<?php echo BASE_URL?>order">Liệt kê</a></li>
         </ul>
       </li>
-      <a href="<?php echo BASE_URL?>login/logout" class="">Logout</a>
-     
+      <!-- <a href="<?php echo BASE_URL?>login/logout" class="">Logout</a> -->
+      <li class="active"><a href="<?php echo BASE_URL?>login/logout">Logout</a></li>
 
     </ul>
   </div>

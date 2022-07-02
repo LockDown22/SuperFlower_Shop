@@ -33,42 +33,99 @@
     if(isset($_SESSION['shopping_cart'])){
         // $cart = $_SESSION['shopping_cart'];
         // print_r($cart);
+       ?>
+    <form action="<?php echo BASE_URL ?>giohang/updatetocart/" method="POST">
+    
+       <?php
         $total = 0;
         foreach($_SESSION['shopping_cart'] as $key => $value){
             $subtotal = $value['product_quantity'] * $value['product_price'];
             $total += $subtotal;
     ?>
+   
     <div  class="box">
-        <a href="cart.php?delete=" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
-        <a href="view_page.php?pid=" class="fas fa-eye"></a>
+
+    <button type="submit" value="<?php echo $value['product_id']?>" name="delete_cart" class="fas fa-times"></button> 
+
+        <a href="<?php echo BASE_URL ?>sanpham/infoproduct/<?php echo $value['product_id']?>" class="fas fa-eye"></a>
      
-        <img src="<?php echo BASE_URL ?>public/uploads/product/<?php echo $value['product_image'] ?>" class="image">
+        <img src="<?php echo BASE_URL ?>public/uploads/product/<?php echo $value['product_image'] ?>" class="image" >
         
         <div class="name"><?php echo $value['product_title'] ?></div>
-        <input type="number" min="1" value="<?php echo $value['product_quantity'] ?>" name="cart_quantity" class="qty">
+        <input type="number" min="0" value="<?php echo $value['product_quantity'] ?>" name="qty[<?php echo $value['product_id'] ?>]" class="">
         <div class="price"><?php echo number_format($value['product_price'],0,',','.').' Vnđ' ?></div>
-        <div class="sub-total"> Total : <?php echo number_format($subtotal,0,',','.').' Vnđ' ?><span></span> </div>      
+        <div class="sub-total"> Total : <?php echo number_format($subtotal,0,',','.').' Vnđ' ?><span></span> </div>
+        <button type="submit" value="<?php echo $value['product_id']?>" name="update_cart" class="option-btn">Update</button>  
+        
+        
     </div>
     <?php
             }
-        }
+            
+        
     ?>
-    </div>
     
-    <div class="more-btn">
-        <a href="cart.php?delete_all" class="delete-btn " onclick="return confirm('delete all from cart?');">delete all</a>
+    </form>
+    
+    
     </div>
+
 
     <div class="cart-total">
         <p>grand total :<?php echo number_format($total,0,',','.').' Vnđ' ?> <span>/-</span></p>
-        <a href="shop.php" class="option-btn">continue shopping</a>
+        <a href="<?php echo BASE_URL?>index" class="option-btn">continue shopping</a>
         <a href="checkout.php" class="btn  ">proceed to checkout</a>
     </div>
-
+    <?php
+            }
+            
+        
+    ?>
 </section>
 
+<section class="checkout">
 
-<script src="js/script.js"></script>
+    <form action="<?php echo BASE_URL ?>giohang/checkout" method="POST">
+
+        <h3>place your order</h3>
+
+        <div class="flex">
+            <div class="inputBox">
+                <span>your name :</span>
+                <input type="text" name="name" placeholder="enter your name">
+            </div>
+            <div class="inputBox">
+                <span>your number :</span>
+                <input type="number" name="sodienthoai" min="0" placeholder="enter your number">
+            </div>
+            <div class="inputBox">
+                <span>your email :</span>
+                <input type="email" name="email" placeholder="enter your email">
+            </div>
+            <div class="inputBox">
+                <span>address:</span>
+                <input type="text" name="diachi" placeholder="e.g. flat no.">
+            </div>
+            <div class="inputBox">
+                <span>Description:</span>
+                <input type="text" name="noidung" placeholder="something">
+            </div>
+           
+        </div>
+
+        <input type="submit" name="order" value="order now" class="btn">
+        <input type="reset" name="order" value="Nhập lại" class="btn">
+    </form>
+
+</section>
+<?php 
+if(!empty($_GET['msg'])){
+    $msg = unserialize(urldecode($_GET['msg']));
+    foreach ($msg as $key => $value){
+        echo '<span style="color:blue;font-weight:bold;">'.$value.'</span>';
+    }  
+}
+?>
 
 </body>
 </html>

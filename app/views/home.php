@@ -21,7 +21,7 @@
 
    <div class="content">
       <h3>@LockDown</h3>
-      <p>Nhìn anh xem ! Sự thành công biết bao người thèm .</p>
+      <p>Chào mừng bạn đến với cửa hàng hoa SuperFlower.</p>
       <a href="<?php echo BASE_URL ?>about" class="btn">discover more</a>
    </div>
 

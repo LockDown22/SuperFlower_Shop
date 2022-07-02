@@ -17,34 +17,34 @@
 
     <div class="box">
         <h3>quick links</h3>
-        <a href="home.php">home</a>
-        <a href="about.php">about</a>
-        <a href="contact.php">contact</a>
-        <a href="shop.php">shop</a>
+        <a href="<?php echo BASE_URL ?>">home</a>
+        <a href="<?php echo BASE_URL ?>index/about">about</a>
+        <a href="<?php echo BASE_URL ?>index/about">contact</a>
+        <a href="<?php echo BASE_URL ?>">shop</a>
     </div>
 
     <div class="box">
         <h3>extra links</h3>
-        <a href="login.php">login</a>
-        <a href="register.php">register</a>
-        <a href="orders.php">my orders</a>
-        <a href="cart.php">my cart</a>
+        <a href="<?php echo BASE_URL ?>login/login">login</a>
+        <a href="#">register</a>
+        <a href="<?php echo BASE_URL ?>giohang/giohang">my orders</a>
+        <a href="<?php echo BASE_URL ?>giohang/giohang">my cart</a>
     </div>
 
     <div class="box">
         <h3>contact info</h3>
-        <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-        <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
-        <p> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </p>
-        <p> <i class="fas fa-map-marker-alt"></i> mumbai, india - 123-456 </p>
+        <p> <i class="fas fa-phone"></i> +84-868-910-024 </p>
+        <p> <i class="fas fa-phone"></i> +84-866-892-821 </p>
+        <p> <i class="fas fa-envelope"></i> thanh140402@gmail.com </p>
+        <p> <i class="fas fa-map-marker-alt"></i> Nam Tu Liem - Ha Noi </p>
     </div>
 
     <div class="box">
         <h3>follow us</h3>
-        <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
-        <a href="#"><i class="fab fa-twitter"></i>twitter</a>
-        <a href="#"><i class="fab fa-instagram"></i>instagram</a>
-        <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+        <a href="https://www.facebook.com/Thanh14.04.2002/"><i class="fab fa-facebook-f"></i>facebook</a>
+        <a href="https://twitter.com/thanh_op"><i class="fab fa-twitter"></i>twitter</a>
+        <a href="https://www.instagram.com/thanhriox/"><i class="fab fa-instagram"></i>instagram</a>
+        <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-thanh-225a17221/"><i class="fab fa-linkedin"></i>linkedin</a>
     </div>
 
 </div>
@@ -53,5 +53,7 @@
 
 </section>
 </body>
+
+
 <!-- <script src="<?php echo BASE_URL ?>product/js/script.js"></script> -->
 </html>

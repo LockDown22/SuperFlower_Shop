@@ -34,7 +34,7 @@ if(!empty($_GET['msg'])){
   </div>
   <div class="form-group">
     <label for="email">Mô tả sản phẩm</label>
-    <textarea name="desc_product" row="5" style="resize:none;"  class="form-control" ><?php echo $pro['desc_product'] ?> </textarea>
+    <textarea  id="editor" name="desc_product" row="5" style="resize:none;"  class="form-control" ><?php echo $pro['desc_product'] ?> </textarea>
   </div>
   <div class="form-group">
     <label for="pwd">Danh Mục sản phẩm</label>

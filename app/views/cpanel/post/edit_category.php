@@ -22,7 +22,7 @@ if(!empty($_GET['msg'])){
   </div>
   <div class="form-group">
     <label for="pwd">Miêu Tả Danh Mục</label>
-    <textarea name="desc_post" style="resize:none ;" rows="5" class="form-control" ><?php echo $cate['desc_post']?></textarea>
+    <textarea id="editor" name="desc_post" style="resize:none ;" rows="5" class="form-control" ><?php echo $cate['desc_post']?></textarea>
   </div>
 
   <button type="submit" class="btn btn-default">Update Danh Mục</button>

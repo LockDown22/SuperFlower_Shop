@@ -24,7 +24,7 @@ if(!empty($_GET['msg'])){
   </div>
   <div class="form-group">
     <label for="email">Chi tiết Bài Viết</label>
-    <textarea name="content_post_flw" row="10" style="resize:none;"  class="form-control" required><?php echo $pos['content_post_flw']?> </textarea>
+    <textarea id="editor" name="content_post_flw" row="10" style="resize:none;"  class="form-control" required><?php echo $pos['content_post_flw']?> </textarea>
   </div>
   <div class="form-group">
     <label for="pwd">Danh Mục Bài Viết</label>
